@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+# Points the T1Bridge Touch Bar user service at this plugin's desktop provider.
+#
+#   t1-desktop-setup install    write the systemd drop-in, restart the renderer if it changed
+#   t1-desktop-setup uninstall  remove the drop-in and restart the renderer
+#   t1-desktop-setup status     one JSON object describing the current wiring
+set -euo pipefail
+
+PLUGIN_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)
+PROVIDER=$PLUGIN_DIR/t1-desktop-provider
+UNIT=t1-touchbar.service
+DROPIN_DIR=${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/$UNIT.d
+DROPIN=$DROPIN_DIR/t1-desktop.conf
+# First t1bridge release whose built-in renderer understands display power.
+DISPLAY_POWER_SINCE=0.1.10
+
+installed_version() {
+  pacman -Q t1bridge 2>/dev/null | awk '{ print $2 }' | cut -d- -f1
+}
+
+display_power_supported() {
+  local version
+  version=$(installed_version) || return 1
+  [[ -n $version ]] || return 1
+  (( $(vercmp "$version" "$DISPLAY_POWER_SINCE") >= 0 ))
+}
+
+unit_present() {
+  systemctl --user list-unit-files "$UNIT" 2>/dev/null | grep -q "^$UNIT"
+}
+
+desired_dropin() {
+  local display_power=0
+  display_power_supported && display_power=1
+  cat <<CONF
+# Written by the Omarchy plugin nn.t1-desktop. Edit T1_DESKTOP_DISPLAY_POWER
+# to 1 to force display power on for a renderer built from newer sources.
+[Service]
+Environment=T1BRIDGE_DESKTOP_PROVIDER=$PROVIDER
+Environment=T1_DESKTOP_DISPLAY_POWER=$display_power
+CONF
+}
+
+restart_renderer() {
+  systemctl --user daemon-reload
+  if systemctl --user is-enabled --quiet "$UNIT" 2>/dev/null || systemctl --user is-active --quiet "$UNIT" 2>/dev/null; then
+    systemctl --user restart "$UNIT"
+  fi
+}
+
+case ${1:-} in
+install)
+  unit_present || { echo "t1bridge is not installed ($UNIT missing); nothing to wire" >&2; exit 0; }
+  [[ -x $PROVIDER ]] || { echo "$PROVIDER is not executable" >&2; exit 1; }
+  mkdir -p "$DROPIN_DIR"
+  wanted=$(desired_dropin)
+  if [[ -f $DROPIN ]] && [[ $(cat "$DROPIN") == "$wanted" ]]; then
+    echo "already installed"
+    exit 0
+  fi
+  printf '%s\n' "$wanted" >"$DROPIN"
+  restart_renderer
+  echo "installed"
+  ;;
+uninstall)
+  if [[ -f $DROPIN ]]; then
+    rm -f "$DROPIN"
+    rmdir "$DROPIN_DIR" 2>/dev/null || true
+    restart_renderer
+    echo "uninstalled"
+  else
+    echo "not installed"
+  fi
+  ;;
+status)
+  installed=false; [[ -f $DROPIN ]] && installed=true
+  display_power=false; display_power_supported && display_power=true
+  active=$(systemctl --user is-active "$UNIT" 2>/dev/null || true)
+  record=$(T1_DESKTOP_DISPLAY_POWER=$([[ $display_power == true ]] && echo 1 || echo 0) "$PROVIDER" v1 status 2>/dev/null || true)
+  jq -cn --argjson installed "$installed" --argjson displayPower "$display_power" \
+    --arg unit "$active" --arg version "$(installed_version || true)" --arg record "$record" --arg provider "$PROVIDER" \
+    '{installed: $installed, displayPower: $displayPower, unit: $unit, t1bridge: $version, provider: $provider, status: $record}'
+  ;;
+*)
+  echo "usage: t1-desktop-setup install|uninstall|status" >&2
+  exit 2
+  ;;
+esac

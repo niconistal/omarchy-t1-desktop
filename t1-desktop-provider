@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# T1Bridge desktop provider v1 for Omarchy.
+#
+# The T1Bridge Touch Bar renderer runs this once a second for `v1 status` and
+# once per Touch Bar action. Stdout is limited to 128 bytes and every call must
+# finish within 500 ms, so this script only shells out to fast local commands.
+# Contract: https://github.com/standardagents/t1bridge/blob/main/docs/interfaces.md
+set -u
+
+SINK=@DEFAULT_AUDIO_SINK@
+
+[[ ${1:-} == v1 ]] || exit 1
+op=${2:-}
+
+volume_percent() {
+  # wpctl prints "Volume: 0.75" or "Volume: 0.75 [MUTED]" with two decimals.
+  local value=${1#Volume: }
+  value=${value%% *}
+  value=${value/./}
+  value=$((10#$value))
+  (( value > 100 )) && value=100
+  echo "$value"
+}
+
+display_on() {
+  # 1 while any enabled monitor is powered, 0 once the desktop blanked them
+  # all. A failed query reports on: a dark Touch Bar must never be a guess.
+  local monitors
+  monitors=$(hyprctl monitors -j 2>/dev/null) || { echo 1; return; }
+  if jq -e 'any(.[]; .disabled == false and .dpmsStatus)' <<<"$monitors" >/dev/null 2>&1; then
+    echo 1
+  elif jq -e 'length > 0' <<<"$monitors" >/dev/null 2>&1; then
+    echo 0
+  else
+    echo 1
+  fi
+}
+
+status() {
+  local caps=0 volume=- muted=- display="" wp
+  if wp=$(wpctl get-volume "$SINK" 2>/dev/null); then
+    caps=$((caps | 1))
+    volume=$(volume_percent "$wp")
+    [[ $wp == *MUTED* ]] && muted=1 || muted=0
+  fi
+  command -v playerctl >/dev/null 2>&1 && caps=$((caps | 2))
+  command -v notify-send >/dev/null 2>&1 && caps=$((caps | 4))
+  command -v omarchy-osd >/dev/null 2>&1 && caps=$((caps | 8))
+  # Display power is a newer part of the contract. Older renderers reject the
+  # bit, so the setup script only turns it on for a renderer that understands it.
+  if [[ ${T1_DESKTOP_DISPLAY_POWER:-0} == 1 ]] && command -v hyprctl >/dev/null 2>&1; then
+    caps=$((caps | 16))
+    display=" $(display_on)"
+  fi
+  echo "T1BRIDGE-DESKTOP 1 $caps $volume $muted$display"
+}
+
+case $op in
+status)
+  status
+  ;;
+set-volume)
+  [[ ${3:-} =~ ^[0-9]+$ ]] && (( $3 <= 100 )) || exit 1
+  exec wpctl set-volume "$SINK" "$3%"
+  ;;
+toggle-mute)
+  exec wpctl set-mute "$SINK" toggle
+  ;;
+media-previous)
+  exec playerctl previous
+  ;;
+media-play-pause)
+  exec playerctl play-pause
+  ;;
+media-next)
+  exec playerctl next
+  ;;
+show-display-brightness)
+  exec omarchy-osd -i brightness -p "$(omarchy-brightness-display 2>/dev/null || echo 0)"
+  ;;
+show-keyboard-backlight)
+  level=$(brightnessctl -d '*kbd_backlight' -m 2>/dev/null | awk -F, 'NR==1 { gsub("%", "", $4); print $4 }')
+  exec omarchy-osd -i keyboard -p "${level:-0}"
+  ;;
+notify-renderer-fallback)
+  case ${3:-} in
+  selection-unavailable) detail="The selected Touch Bar renderer could not start." ;;
+  selection-exited) detail="The selected Touch Bar renderer exited." ;;
+  *) exit 1 ;;
+  esac
+  exec notify-send -a "Touch Bar" "Using the built-in Touch Bar renderer" "$detail"
+  ;;
+*)
+  exit 1
+  ;;
+esac
