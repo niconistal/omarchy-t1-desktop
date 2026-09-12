@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/logo.png" width="128" alt="T1 Touch Bar Desktop mark: volume, play and brightness on a glowing strip">
+<img src="docs/assets/logo.png" width="128" alt="T1 Touch Bar Desktop">
 
 <img src="docs/assets/hero.svg" alt="T1 Touch Bar Desktop: an Omarchy plugin that wires the T1 Touch Bar to the desktop" width="100%">
 
@@ -26,10 +26,6 @@ nothing about the desktop. It looks for an optional *desktop provider*, an
 executable it polls once a second for the current state and calls once per
 Touch Bar action. This plugin is that provider for Omarchy. With it enabled
 the Touch Bar gains:
-
-<img src="docs/assets/hardware.jpg" alt="A T1 MacBook Pro Touch Bar showing volume, media and brightness controls" width="100%">
-
-<p align="center"><sub>Volume, media and brightness — on the strip, talking to the desktop.</sub></p>
 
 <img src="docs/assets/features.svg" alt="Volume, media, brightness OSDs, and a dark bar when the display sleeps" width="100%">
 

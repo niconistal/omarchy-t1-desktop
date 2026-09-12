@@ -89,15 +89,15 @@ def ico_moon(x, y, color="#7aa2f7"):
 
 
 # --------------------------------------------------------------------------- hero
-hero = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-label="T1 Touch Bar Desktop: an Omarchy plugin that wires the T1 Touch Bar to the desktop">
+hero = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-label="T1 Touch Bar Desktop: an Omarchy plugin that wires the T1 Touch Bar to the desktop">
   <defs>{DEFS}
     <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
       <circle cx="1.2" cy="1.2" r="1.2" fill="#ffffff" opacity="0.04"/>
     </pattern>
   </defs>
 
-  <rect width="1280" height="420" rx="32" fill="url(#bg)"/>
-  <rect width="1280" height="420" rx="32" fill="url(#dots)"/>
+  <rect width="1280" height="340" rx="32" fill="url(#bg)"/>
+  <rect width="1280" height="340" rx="32" fill="url(#dots)"/>
   <circle cx="1140" cy="30" r="220" fill="url(#orbG)" filter="url(#soft)"/>
   <circle cx="160" cy="400" r="200" fill="url(#orbB)" filter="url(#soft)"/>
   <circle cx="700" cy="0" r="140" fill="url(#orbM)" opacity="0.8" filter="url(#soft)"/>
@@ -123,37 +123,7 @@ hero = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" vie
     <text x="0" y="110" font-size="14" fill="#565f89">the renderer polls status</text>
   </g>
 
-  <!-- control strip -->
-  <rect x="72" y="324" width="1136" height="36" rx="12" fill="#05060d" opacity="0.9"/>
-  <rect x="72" y="328" width="1136" height="28" rx="14" fill="url(#spectrum)" opacity="0.22" filter="url(#glow)"/>
-  <rect x="72" y="324" width="1136" height="36" rx="12" fill="#0e0e14" stroke="#ffffff" stroke-opacity="0.12"/>
-
-  <rect x="84" y="332" width="52" height="20" rx="6" fill="#ffffff" fill-opacity="0.08"/>
-  <text x="110" y="347" text-anchor="middle" font-family="{SANS}" font-size="11" fill="#c0caf5">esc</text>
-
-  <g transform="translate(150 333)">{ico_speaker(0, 0, "#c0caf5")}</g>
-  <rect x="184" y="338" width="360" height="8" rx="4" fill="url(#spectrum)"/>
-  <circle cx="500" cy="342" r="7" fill="#c0caf5"/>
-
-  <g transform="translate(540 332)" fill="#c0caf5">
-    <rect x="0" y="5" width="2.2" height="12" rx="0.6"/>
-    <path d="M 14 5 L 4 11 L 14 17 z"/>
-  </g>
-  <g transform="translate(568 332)" fill="#c0caf5">
-    <path d="M 4 5 l 12 6 l -12 6 z"/>
-  </g>
-  <g transform="translate(596 332)" fill="#c0caf5">
-    <path d="M 4 5 L 14 11 L 4 17 z"/>
-    <rect x="14.8" y="5" width="2.2" height="12" rx="0.6"/>
-  </g>
-
-  <g transform="translate(640 332)">{ico_sun(0, 0)}</g>
-  <g transform="translate(676 334)" fill="none" stroke="#7dcfff" stroke-width="1.5">
-    <rect x="0" y="2" width="20" height="14" rx="2"/>
-    <path d="M 4 6 h 3 M 9 6 h 3 M 14 6 h 3 M 4 10 h 3 M 9 10 h 3 M 14 10 h 3" stroke-linecap="round"/>
-  </g>
-
-  <text x="1188" y="347" text-anchor="end" font-family="{MONO}" font-size="12" fill="#9ece6a">desktop provider v1</text>
+  <rect x="0" y="332" width="1280" height="8" fill="url(#spectrum)"/>
 </svg>'''
 write("hero.svg", hero)
 
@@ -195,13 +165,9 @@ display = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="168" 
 
   <g transform="translate(36 28)">
     <text x="0" y="18" font-family="{MONO}" font-size="13" fill="#9ece6a">display on</text>
-    <rect y="36" width="540" height="44" rx="12" fill="#0e0e14" stroke="#ffffff" stroke-opacity="0.10"/>
-    <rect x="12" y="48" width="40" height="20" rx="5" fill="#ffffff" fill-opacity="0.10"/>
-    <text x="32" y="63" text-anchor="middle" font-family="{SANS}" font-size="11" fill="#c0caf5">esc</text>
-    <rect x="62" y="50" width="280" height="16" rx="8" fill="url(#spectrum)"/>
-    <g transform="translate(360 44)">{ico_play(0, 0, "#c0caf5")}</g>
-    <g transform="translate(400 42)">{ico_sun(0, 0)}</g>
-    <text x="0" y="106" font-family="{SANS}" font-size="14" fill="#a9b1d6">volume, media, brightness</text>
+    <rect y="36" width="540" height="44" rx="12" fill="#0e0e14" stroke="#9ece6a" stroke-opacity="0.35"/>
+    <rect x="16" y="50" width="508" height="16" rx="8" fill="#9ece6a" fill-opacity="0.22"/>
+    <text x="0" y="106" font-family="{SANS}" font-size="14" fill="#a9b1d6">the renderer paints; this plugin feeds it state</text>
   </g>
 
   <g transform="translate(600 70)">
@@ -212,9 +178,7 @@ display = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="168" 
   <g transform="translate(668 28)">
     <text x="0" y="18" font-family="{MONO}" font-size="13" fill="#565f89">display off</text>
     <rect y="36" width="540" height="44" rx="12" fill="#05060d" stroke="#ffffff" stroke-opacity="0.06"/>
-    <rect x="12" y="48" width="40" height="20" rx="5" fill="#ffffff" fill-opacity="0.04"/>
-    <text x="32" y="63" text-anchor="middle" font-family="{SANS}" font-size="11" fill="#3b4261">esc</text>
-    <rect x="62" y="50" width="400" height="16" rx="8" fill="#ffffff" fill-opacity="0.04"/>
+    <rect x="16" y="50" width="508" height="16" rx="8" fill="#ffffff" fill-opacity="0.04"/>
     <text x="0" y="106" font-family="{SANS}" font-size="14" fill="#565f89">lock screen blanks · bar sleeps with it</text>
   </g>
 </svg>'''
