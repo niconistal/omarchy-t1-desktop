@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "nn.t1-desktop",
   "name": "T1 Touch Bar Desktop",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "nn",
   "license": "MIT",
   "description": "Wires the T1Bridge Touch Bar to the Omarchy desktop: volume and mute, media keys, brightness OSDs, and a dark Touch Bar whenever the display is off.",
