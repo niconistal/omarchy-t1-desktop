@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-label="Install with omarchy plugin add, then check t1desktop status">
+  <defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0e0e14"/>
+    <stop offset="0.55" stop-color="#13141c"/>
+    <stop offset="1" stop-color="#1a1b26"/>
+  </linearGradient>
+  <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#f7768e"/>
+    <stop offset="0.25" stop-color="#e0af68"/>
+    <stop offset="0.5" stop-color="#9ece6a"/>
+    <stop offset="0.75" stop-color="#7dcfff"/>
+    <stop offset="1" stop-color="#bb9af7"/>
+  </linearGradient>
+  <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#c0caf5"/>
+    <stop offset="1" stop-color="#9ece6a"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.08"/>
+    <stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
+  </linearGradient>
+  <radialGradient id="orbG" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#9ece6a" stop-opacity="0.45"/>
+    <stop offset="1" stop-color="#9ece6a" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="orbB" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#7aa2f7" stop-opacity="0.40"/>
+    <stop offset="1" stop-color="#7aa2f7" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="orbM" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#bb9af7" stop-opacity="0.35"/>
+    <stop offset="1" stop-color="#bb9af7" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="glow" x="-20%" y="-200%" width="140%" height="500%">
+    <feGaussianBlur stdDeviation="14"/>
+  </filter>
+  <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="40"/>
+  </filter>
+</defs>
+  <rect width="1280" height="400" rx="28" fill="#0e0e14" stroke="#ffffff" stroke-opacity="0.10"/>
+  <rect width="1280" height="48" rx="28" fill="#13141c"/>
+  <rect y="24" width="1280" height="24" fill="#13141c"/>
+  <circle cx="32" cy="24" r="7" fill="#f7768e"/>
+  <circle cx="56" cy="24" r="7" fill="#e0af68"/>
+  <circle cx="80" cy="24" r="7" fill="#9ece6a"/>
+  <text x="640" y="30" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="13" fill="#565f89">omarchy  ·  nn.t1-desktop</text>
+  <text x="36" y="92" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#c0caf5" font-variant-ligatures="none">$ omarchy plugin add https://github.com/niconistal/omarchy-t1-desktop.git --enable</text><text x="36" y="130" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#9ece6a" font-variant-ligatures="none">enabled  nn.t1-desktop</text><text x="36" y="156" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="15" font-weight="500" fill="#a9b1d6" font-variant-ligatures="none">wrote ~/.config/systemd/user/t1-touchbar.service.d/t1-desktop.conf</text><text x="36" y="182" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="15" font-weight="500" fill="#a9b1d6" font-variant-ligatures="none">restarted t1-touchbar.service</text><text x="36" y="220" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#c0caf5" font-variant-ligatures="none">$ omarchy-shell t1desktop status</text><text x="36" y="246" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#9ece6a" font-variant-ligatures="none">T1BRIDGE-DESKTOP 1 31 42 0 1</text><text x="36" y="272" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="15" font-weight="500" fill="#565f89" font-variant-ligatures="none">  caps  volume  mute  display-on</text><text x="36" y="310" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#c0caf5" font-variant-ligatures="none">$ omarchy-shell t1desktop last</text><text x="36" y="336" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="15" font-weight="500" fill="#a9b1d6" font-variant-ligatures="none">install: already installed</text>
+  <rect x="0" y="392" width="1280" height="8" fill="url(#spectrum)"/>
+</svg>

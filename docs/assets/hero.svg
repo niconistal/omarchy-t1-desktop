@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-label="T1 Touch Bar Desktop: an Omarchy plugin that wires the T1 Touch Bar to the desktop">
+  <defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0e0e14"/>
+    <stop offset="0.55" stop-color="#13141c"/>
+    <stop offset="1" stop-color="#1a1b26"/>
+  </linearGradient>
+  <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#f7768e"/>
+    <stop offset="0.25" stop-color="#e0af68"/>
+    <stop offset="0.5" stop-color="#9ece6a"/>
+    <stop offset="0.75" stop-color="#7dcfff"/>
+    <stop offset="1" stop-color="#bb9af7"/>
+  </linearGradient>
+  <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#c0caf5"/>
+    <stop offset="1" stop-color="#9ece6a"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.08"/>
+    <stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/>
+  </linearGradient>
+  <radialGradient id="orbG" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#9ece6a" stop-opacity="0.45"/>
+    <stop offset="1" stop-color="#9ece6a" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="orbB" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#7aa2f7" stop-opacity="0.40"/>
+    <stop offset="1" stop-color="#7aa2f7" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="orbM" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#bb9af7" stop-opacity="0.35"/>
+    <stop offset="1" stop-color="#bb9af7" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="glow" x="-20%" y="-200%" width="140%" height="500%">
+    <feGaussianBlur stdDeviation="14"/>
+  </filter>
+  <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="40"/>
+  </filter>
+
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.2" cy="1.2" r="1.2" fill="#ffffff" opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="420" rx="32" fill="url(#bg)"/>
+  <rect width="1280" height="420" rx="32" fill="url(#dots)"/>
+  <circle cx="1140" cy="30" r="220" fill="url(#orbG)" filter="url(#soft)"/>
+  <circle cx="160" cy="400" r="200" fill="url(#orbB)" filter="url(#soft)"/>
+  <circle cx="700" cy="0" r="140" fill="url(#orbM)" opacity="0.8" filter="url(#soft)"/>
+
+  <g transform="translate(72 52)">
+    <rect width="54" height="54" rx="16" fill="#0e0e14" stroke="#ffffff" stroke-opacity="0.12"/>
+    <rect x="7" y="22" width="40" height="10" rx="5" fill="url(#spectrum)"/>
+  </g>
+  <text x="144" y="88" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="5" fill="#9ece6a">OMARCHY PLUGIN</text>
+
+  <text x="72" y="168" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="58" font-weight="800" letter-spacing="-1.5" fill="url(#title)">T1 Touch Bar Desktop</text>
+  <text x="74" y="214" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#a9b1d6">The strip talks to Omarchy. Volume, media, brightness. Dark when the display sleeps.</text>
+
+  <g transform="translate(72 244)">
+      <rect width="132" height="34" rx="17.0" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.14"/>
+      <text x="66.0" y="23.1" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#c0caf5">Omarchy 3</text>
+    </g>
+  <g transform="translate(216 244)">
+      <rect width="118" height="34" rx="17.0" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.14"/>
+      <text x="59.0" y="23.1" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#c0caf5">T1Bridge</text>
+    </g>
+  <g transform="translate(346 244)">
+      <rect width="132" height="34" rx="17.0" fill="#9ece6a" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.35"/>
+      <text x="66.0" y="23.1" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#9ece6a">user service</text>
+    </g>
+  <g transform="translate(490 244)">
+      <rect width="148" height="34" rx="17.0" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.14"/>
+      <text x="74.0" y="23.1" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#c0caf5">nn.t1-desktop</text>
+    </g>
+
+  <g transform="translate(980 118)" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="0" y="0" font-size="34" font-weight="800" fill="#c0caf5">no root</text>
+    <text x="0" y="26" font-size="14" fill="#565f89">your user, your session</text>
+    <text x="0" y="84" font-size="34" font-weight="800" fill="#9ece6a">1 second</text>
+    <text x="0" y="110" font-size="14" fill="#565f89">the renderer polls status</text>
+  </g>
+
+  <!-- control strip -->
+  <rect x="72" y="324" width="1136" height="36" rx="12" fill="#05060d" opacity="0.9"/>
+  <rect x="72" y="328" width="1136" height="28" rx="14" fill="url(#spectrum)" opacity="0.22" filter="url(#glow)"/>
+  <rect x="72" y="324" width="1136" height="36" rx="12" fill="#0e0e14" stroke="#ffffff" stroke-opacity="0.12"/>
+
+  <rect x="84" y="332" width="52" height="20" rx="6" fill="#ffffff" fill-opacity="0.08"/>
+  <text x="110" y="347" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#c0caf5">esc</text>
+
+  <g transform="translate(150 333)"><g transform="translate(0 0)" fill="#c0caf5">
+      <path d="M 2 7 h 4 l 5 -4 v 14 l -5 -4 h -4 z"/>
+      <path d="M 13 8 q 3 2 3 4 q 0 2 -3 4" fill="none" stroke="#c0caf5" stroke-width="1.6" stroke-linecap="round"/>
+    </g></g>
+  <rect x="184" y="338" width="360" height="8" rx="4" fill="url(#spectrum)"/>
+  <circle cx="500" cy="342" r="7" fill="#c0caf5"/>
+
+  <g transform="translate(540 332)" fill="#c0caf5">
+    <rect x="0" y="5" width="2.2" height="12" rx="0.6"/>
+    <path d="M 14 5 L 4 11 L 14 17 z"/>
+  </g>
+  <g transform="translate(568 332)" fill="#c0caf5">
+    <path d="M 4 5 l 12 6 l -12 6 z"/>
+  </g>
+  <g transform="translate(596 332)" fill="#c0caf5">
+    <path d="M 4 5 L 14 11 L 4 17 z"/>
+    <rect x="14.8" y="5" width="2.2" height="12" rx="0.6"/>
+  </g>
+
+  <g transform="translate(640 332)"><g transform="translate(0 0)" fill="none" stroke="#e0af68" stroke-width="1.7" stroke-linecap="round">
+      <circle cx="10" cy="10" r="4" fill="#e0af68" stroke="none"/>
+      <path d="M 10 1 v 2.5 M 10 16.5 v 2.5 M 1 10 h 2.5 M 16.5 10 h 2.5 M 3.5 3.5 l 1.8 1.8 M 14.7 14.7 l 1.8 1.8 M 16.5 3.5 l -1.8 1.8 M 5.3 14.7 l -1.8 1.8"/>
+    </g></g>
+  <g transform="translate(676 334)" fill="none" stroke="#7dcfff" stroke-width="1.5">
+    <rect x="0" y="2" width="20" height="14" rx="2"/>
+    <path d="M 4 6 h 3 M 9 6 h 3 M 14 6 h 3 M 4 10 h 3 M 9 10 h 3 M 14 10 h 3" stroke-linecap="round"/>
+  </g>
+
+  <text x="1188" y="347" text-anchor="end" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="12" fill="#9ece6a">desktop provider v1</text>
+</svg>
