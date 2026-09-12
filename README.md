@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="docs/assets/logo.png" width="128" alt="T1 Touch Bar Desktop">
-
 <img src="docs/assets/hero.svg" alt="T1 Touch Bar Desktop: an Omarchy plugin that wires the T1 Touch Bar to the desktop" width="100%">
 
 **An [Omarchy](https://omarchy.org) plugin that wires the Touch Bar of a T1 MacBook Pro, driven by [T1Bridge](https://github.com/standardagents/t1bridge), to the desktop it sits under.**
